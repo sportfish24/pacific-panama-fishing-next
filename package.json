@@ -11,17 +11,24 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@babel/runtime": "^7.28.2",
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@eslint/css": "^0.10.0",
     "@eslint/eslintrc": "^3",
     "@eslint/js": "^9.33.0",
     "@eslint/json": "^0.13.1",
     "@eslint/markdown": "^7.1.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -29,10 +36,14 @@
     "eslint-config-next": "15.4.6",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
+    "husky": "^8.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
     "jiti": "^2.5.1",
+    "next-intl": "^4.3.4",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "typescript-eslint": "^8.39.1",
-    "husky": "^8.0.0"
+    "typescript-eslint": "^8.39.1"
   }
 }

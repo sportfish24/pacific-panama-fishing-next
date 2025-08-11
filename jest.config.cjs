@@ -2,6 +2,9 @@ module.exports = {
   testEnvironment: "jest-environment-jsdom",
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "^next-intl$": "<rootDir>/__mocks__/next-intl.js",
+  "^next/navigation$": "<rootDir>/__mocks__/next-navigation.js",
+  "^next/link$": "<rootDir>/__mocks__/next-link.js",
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   transform: {
@@ -18,7 +21,7 @@ module.exports = {
   },
   extensionsToTreatAsEsm: [".ts", ".tsx", ".jsx"],
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
-  transformIgnorePatterns: ["/node_modules/(?!next-intl)"],
+  transformIgnorePatterns: ["/node_modules/(?!next-intl|use-intl)"],
   collectCoverage: true,
   collectCoverageFrom: [
     "<rootDir>/components/**/*.{ts,tsx}",
