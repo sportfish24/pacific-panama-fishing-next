@@ -4,9 +4,10 @@ import "@testing-library/jest-dom";
 import Navbar from "../Navbar";
 
 // Mock next/link for Jest
+
 jest.mock("next/link", () => ({
   __esModule: true,
-  default: ({ href, children, ...props }: any) => <a href={href} {...props}>{children}</a>,
+  default: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props}>{children}</a>,
 }));
 
 // Mock next-intl hooks for Jest
