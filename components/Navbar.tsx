@@ -1,19 +1,20 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
-  const t = useTranslations("nav");
-  const locale = useLocale();
+export default function Navbar(): React.ReactElement {
   const pathname = usePathname();
+  
+  // Determine current locale from pathname
+  const locale = pathname.startsWith('/es') ? 'es' : 'en';
+  
   const links = [
-    { href: `/${locale}/charters`, label: t("charters") },
-    { href: `/${locale}/species`, label: t("species") },
-    { href: `/${locale}/catch-log`, label: t("catchLog") },
-    { href: `/${locale}/gallery`, label: t("gallery") },
-    { href: `/${locale}/contact`, label: t("contact") },
+    { href: `/${locale}/charters`, label: locale === 'es' ? 'Excursiones' : 'Charters' },
+    { href: `/${locale}/species`, label: locale === 'es' ? 'Especies' : 'Species' },
+    { href: `/${locale}/catch-log`, label: locale === 'es' ? 'Registro' : 'Catch Log' },
+    { href: `/${locale}/gallery`, label: locale === 'es' ? 'Galería' : 'Gallery' },
+    { href: `/${locale}/contact`, label: locale === 'es' ? 'Contacto' : 'Contact' },
   ];
 
   const otherLocale = locale === "en" ? "es" : "en";
@@ -35,7 +36,7 @@ export default function Navbar() {
           ))}
         </ul>
         <button className="lang-toggle">
-          <Link href={switchLocaleHref} prefetch={false}>
+          <Link href={switchLocaleHref}>
             {otherLocale === "en" ? "English" : "Español"}
           </Link>
         </button>

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function middleware(request: NextRequest): NextResponse | undefined {
   const { pathname } = request.nextUrl;
   // Redirect root to English or detect browser language
   if (pathname === "/") {

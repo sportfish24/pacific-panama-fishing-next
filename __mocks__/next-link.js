@@ -1,8 +1,7 @@
-const React = require("react");
+import React from "react";
 
-function Link({ href, children, prefetch, replace, scroll, shallow, ...rest }) {
-  // Omit Next.js-specific props not valid on <a>
-  return React.createElement("a", { href, ...rest }, children);
+function Link({ href, children, ...rest }) {
+  return <a href={href} {...rest}>{children}</a>;
 }
 
-module.exports = Link;
+export default Link;

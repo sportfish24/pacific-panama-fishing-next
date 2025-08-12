@@ -1,0 +1,32 @@
+# Generated files
+.next/
+.vercel/
+dist/
+build/
+node_modules/
+
+# Type files (auto-generated)
+*.d.ts
+!src/**/*.d.ts
+.next/types/
+
+# Coverage reports
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache

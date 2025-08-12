@@ -1,25 +1,20 @@
-import { NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
-import { ReactNode } from "react";
-import { getMessages } from "../messages";
 
-export default async function LocaleLayout({
+import React from "react";
+import { notFound } from "next/navigation";
+
+export default function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   params: { locale: string };
-}) {
-  let messages;
-  try {
-    messages = (await import(`../messages/${locale}.json`)).default;
-  } catch (error) {
+}): React.ReactElement {
+  const { locale } = params;
+
+  // Validate locale
+  if (!['en', 'es'].includes(locale)) {
     notFound();
   }
 
-  return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      {children}
-    </NextIntlClientProvider>
-  );
+  return <>{children}</>;
 }

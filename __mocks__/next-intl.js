@@ -1,15 +1,12 @@
-const React = require("react");
+import React from "react";
 
-function NextIntlClientProvider({ children }) {
-  return React.createElement(React.Fragment, null, children);
+export function NextIntlClientProvider({ children }) {
+  return <>{children}</>;
 }
 
-module.exports = {
-  useTranslations: () => (key) => key,
-  useLocale: () => "en",
-  useFormatter: () => (value) => value,
-  useMessages: () => ({}),
-  useNow: () => new Date(),
-  useTimeZone: () => "UTC",
-  NextIntlClientProvider,
-};
+export const useTranslations = () => (key) => key;
+export const useLocale = () => "en";
+export const useFormatter = () => (value) => value;
+export const useMessages = () => ({});
+export const useNow = () => new Date();
+export const useTimeZone = () => "UTC";

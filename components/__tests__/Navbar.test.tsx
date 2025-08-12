@@ -4,12 +4,10 @@ import "@testing-library/jest-dom";
 import Navbar from "../Navbar";
 
 // Mock next/link for Jest
-jest.mock("next/link", () => {
-  const React = require("react");
-  const Link = ({ href, children, prefetch, ...props }) =>
-    React.createElement("a", { href, ...props }, children);
-  return { __esModule: true, default: Link };
-});
+jest.mock("next/link", () => ({
+  __esModule: true,
+  default: ({ href, children, ...props }: any) => <a href={href} {...props}>{children}</a>,
+}));
 
 // Mock next-intl hooks for Jest
 const nav: Record<string, string> = {
@@ -25,15 +23,46 @@ jest.mock("next-intl", () => ({
   useLocale: () => "en",
 }));
 
+let mockPathname = "/en/catch-log";
 jest.mock("next/navigation", () => ({
-  usePathname: () => "/en/catch-log",
+  usePathname: () => mockPathname,
 }));
 
 describe("Navbar", () => {
+  beforeEach(() => {
+    mockPathname = "/en/catch-log";
+  });
+
   it("renders navigation links", () => {
     render(<Navbar />);
-    expect(screen.getByText("Charters")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Charters" })).toBeInTheDocument();
     expect(screen.getByText("Catch Log")).toBeInTheDocument();
     expect(screen.getByText("Gallery")).toBeInTheDocument();
+  });
+
+  it("renders Spanish navigation links when pathname starts with /es", () => {
+    mockPathname = "/es/catch-log";
+    render(<Navbar />);
+    expect(screen.getByRole("link", { name: "Excursiones" })).toBeInTheDocument();
+    expect(screen.getByText("Registro")).toBeInTheDocument();
+    expect(screen.getByText("Galería")).toBeInTheDocument();
+  });
+
+  it("renders locale switch button", () => {
+    render(<Navbar />);
+    expect(screen.getByRole("link", { name: "Español" })).toBeInTheDocument();
+  });
+
+  it("renders all navigation links", () => {
+    render(<Navbar />);
+    ["Charters", "Species", "Catch Log", "Gallery", "Contact"].forEach(label => {
+      expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
+    });
+  });
+
+  it("handles unknown pathname gracefully", () => {
+    mockPathname = "/unknown/path";
+    render(<Navbar />);
+    expect(screen.getByRole("link", { name: "Charters" })).toBeInTheDocument();
   });
 });

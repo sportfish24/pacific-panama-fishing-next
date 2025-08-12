@@ -1,9 +1,10 @@
-import { NextIntlClientProvider } from "next-intl";
+
 import React from "react";
 
-export default function EnLayout({ children }: { children: React.ReactNode }) {
-  // If desired, provide en-specific context/providers here.
+export default function EnLayout({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
-    <NextIntlClientProvider locale="en">{children}</NextIntlClientProvider>
+    <>
+      {children}
+    </>
   );
 }

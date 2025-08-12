@@ -1,12 +1,12 @@
 import React from "react";
-import { useTranslations } from "next-intl";
+import Navbar from "../../../components/Navbar";
 
 export default function CatchLogEN() {
-  const t = useTranslations("catchLog");
   return (
     <>
+      <Navbar />
       <main>
-        <h1>{t("title")}</h1>
+        <h1>Catch Log</h1>
         {/* ...migrate rest of content from en/pages/catch-log.html... */}
       </main>
     </>

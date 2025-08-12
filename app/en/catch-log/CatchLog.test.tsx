@@ -12,6 +12,6 @@ jest.mock("next-intl", () => ({
 describe("CatchLogEN", () => {
   it("renders the Catch Log page title", () => {
     render(<CatchLogEN />);
-    expect(screen.getByText("Catch Log")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Catch Log" })).toBeInTheDocument();
   });
 });
